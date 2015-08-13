@@ -1,0 +1,1 @@
+web: python coys_bot/flaskr.py
