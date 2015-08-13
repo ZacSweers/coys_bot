@@ -23,6 +23,7 @@ import config
 standard_commands = [
     'rm',
     'flair',
+    'approve',
     'ban',
     'running',
     'help'
@@ -86,6 +87,10 @@ def process_command(text):
         else:
             submission.set_flair(text)
         return "Flaired!"
+    elif command == 'approve':
+        submission = r.get_submission(submission_id=target)
+        submission.approve()
+        return "Approved!"
     elif command == 'ban':
         # # target is the user id
         # try:
