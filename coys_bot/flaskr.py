@@ -44,11 +44,13 @@ def process_command(text):
     elif command == 'running':
         return 'banana'
 
-    if len(argv) < 4:
+    if len(argv) < 3:
         return 'usage: postbot %s' % standard_commands
 
     target = argv[2]
-    args = argv[3:]
+    args = []
+    if len(argv) > 2:
+        args = argv[3:]
 
     if command == 'rm':
         # target is the post id
@@ -78,7 +80,7 @@ def process_command(text):
             comment = submission.add_comment(comment_text)
             comment.distinguish()
         submission.remove(spam=is_spam)
-        return "Deleted!"
+        return "Removed!"
     elif command == 'flair':
         text = args[0]
         submission = r.get_submission(submission_id=target)
